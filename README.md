@@ -135,4 +135,3 @@ uv run python main.py 48 15      # last 48h, top 15 articles
 ## Notes
 
 - **Gmail App Password**: enable 2-Step Verification on the Google account, then create an App Password under *Security → App passwords*. Use that 16-character value for `APP_PASSWORD`.
-- Each stage can be run on its own, e.g. `uv run python -m app.runner`, `uv run python -m app.services.process_digests`.
