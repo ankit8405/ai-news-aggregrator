@@ -5,11 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "beautifulsoup4>=4.15.0",
-    "docling>=2.126.0",
     "feedparser>=6.0.14",
+    "html-to-markdown>=3.12.3",
     "markdown>=3.10.3",
-    "markdownify>=1.2.3",
     "openai>=3.11.0",
     "psycopg2-binary>=2.9.12",
     "pydantic>=2.13.5",

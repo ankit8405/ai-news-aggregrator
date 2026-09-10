@@ -10,7 +10,7 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     schedule: "30 2 * * *"
-    dockerCommand: sh -c "python -m app.database.create_tables && python main.py"
+    dockerCommand: python main.py
     envVars:
       - key: DATABASE_URL
         fromDatabase:

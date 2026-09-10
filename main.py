@@ -1,7 +1,9 @@
 from app.daily_runner import run_daily_pipeline
+from app.database.create_tables import create_tables
 
 
 def main(hours: int = 24, top_n: int = 10):
+    create_tables()
     return run_daily_pipeline(hours=hours, top_n=top_n)
 
 
