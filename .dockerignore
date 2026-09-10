@@ -1,35 +1,11 @@
-# Version control
-.git/
-.gitignore
-
-# Python build / cache artifacts
-**/__pycache__/
-**/*.py[cod]
-**/*.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Virtual environments (rebuilt inside the image)
-.venv/
-venv/
-
-# Secrets — never bake credentials into the image
 .env
-**/.env
-
-# Editors / local tooling
+app/.env
+.git/
+.venv/
+**/__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.reasonix/
 .vscode/
 .idea/
-*.code-workspace
-.reasonix/
-
-# Docker Compose (not needed inside the app image)
-docker-compose*.yml
-**/docker-compose*.yml
-
-# Docs
-*.md
-
-# OS cruft
-**/.DS_Store
+.DS_Store
