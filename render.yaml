@@ -1,0 +1,24 @@
+databases:
+  - name: ai-news-aggregator-db
+    databaseName: ai_news_aggregator
+    user: ai_news_user
+    plan: free
+
+services:
+  - type: cron
+    name: daily-digest-job
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    schedule: "30 2 * * *"
+    dockerCommand: sh -c "python -m app.database.create_tables && python main.py"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ai-news-aggregator-db
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MY_EMAIL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
