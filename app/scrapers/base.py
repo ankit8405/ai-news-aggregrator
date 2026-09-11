@@ -1,8 +1,11 @@
 from datetime import datetime, timedelta, timezone
 from typing import List, Optional, Sequence
 from abc import ABC, abstractmethod
-from pydantic import BaseModel
+
+import certifi
 import feedparser
+import requests
+from pydantic import BaseModel
 
 
 class Article(BaseModel):
@@ -27,7 +30,14 @@ class BaseScraper(ABC):
         seen_guids = set()
 
         for rss_url in self.rss_urls:
-            feed = feedparser.parse(rss_url)
+            try:
+                response = requests.get(rss_url, timeout=30, verify=certifi.where())
+                response.raise_for_status()
+            except Exception as e:
+                print(f"  ! failed to fetch {rss_url}: {e}")
+                continue
+
+            feed = feedparser.parse(response.content)
             if not feed.entries:
                 continue
 
