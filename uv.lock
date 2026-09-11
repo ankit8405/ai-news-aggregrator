@@ -16,6 +16,7 @@ name = "ai-news-aggregator"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "certifi" },
     { name = "feedparser" },
     { name = "html-to-markdown" },
     { name = "markdown" },
@@ -35,6 +36,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "certifi", specifier = ">=2026.7.22" },
     { name = "feedparser", specifier = ">=6.0.14" },
     { name = "html-to-markdown", specifier = ">=3.12.3" },
     { name = "markdown", specifier = ">=3.10.3" },

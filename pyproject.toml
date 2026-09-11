@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "certifi>=2026.7.22",
     "feedparser>=6.0.14",
     "html-to-markdown>=3.12.3",
     "markdown>=3.10.3",
