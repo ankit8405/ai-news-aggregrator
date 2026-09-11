@@ -1,11 +1,7 @@
-import os
 from datetime import datetime
 from typing import List, Optional
-from openai import OpenAI
 from pydantic import BaseModel, Field
-from dotenv import load_dotenv
-
-load_dotenv()
+from .base import BaseAgent
 
 
 class EmailIntroduction(BaseModel):
@@ -61,10 +57,9 @@ Your role is to write a warm, professional introduction for a daily AI news dige
 Keep it concise (2-3 sentences for the introduction), friendly, and professional."""
 
 
-class EmailAgent:
+class EmailAgent(BaseAgent):
     def __init__(self, user_profile: dict):
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self.model = "gpt-4o-mini"
+        super().__init__("gpt-4o-mini")
         self.user_profile = user_profile
 
     def generate_introduction(self, ranked_articles: List) -> EmailIntroduction:

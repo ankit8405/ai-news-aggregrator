@@ -1,15 +1,6 @@
-import os
 from typing import Optional
-from openai import OpenAI
 from pydantic import BaseModel
-from dotenv import load_dotenv
-
-load_dotenv()
-
-
-class DigestOutput(BaseModel):
-    title: str
-    summary: str
+from .base import BaseAgent
 
 PROMPT = """You are an expert AI news analyst specializing in summarizing technical articles, research papers, and video content about artificial intelligence.
 
@@ -23,10 +14,14 @@ Guidelines:
 - Avoid marketing fluff - focus on substance"""
 
 
-class DigestAgent:
+class DigestOutput(BaseModel):
+    title: str
+    summary: str
+
+
+class DigestAgent(BaseAgent):
     def __init__(self):
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self.model = "gpt-4o-mini"
+        super().__init__("gpt-4o-mini")
         self.system_prompt = PROMPT
 
     def generate_digest(self, title: str, content: str, article_type: str) -> Optional[DigestOutput]:
@@ -45,4 +40,3 @@ class DigestAgent:
         except Exception as e:
             print(f"Error generating digest: {e}")
             return None
-    
