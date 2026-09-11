@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import Optional
 from sqlalchemy import Column, String, DateTime, Text
 from sqlalchemy.orm import declarative_base
 
@@ -54,3 +53,4 @@ class Digest(Base):
     title = Column(String, nullable=False)
     summary = Column(Text, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    sent_at = Column(DateTime, nullable=True)
