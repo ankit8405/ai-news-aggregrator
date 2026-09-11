@@ -1,10 +1,10 @@
 import os
 import smtplib
 import html
+import markdown
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
-import markdown
 
 load_dotenv()
 

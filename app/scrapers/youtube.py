@@ -1,9 +1,9 @@
-from datetime import datetime, timedelta, timezone
-from typing import List, Optional
 import os
 import feedparser
 import requests
 import certifi
+from datetime import datetime, timedelta, timezone
+from typing import List, Optional
 from pydantic import BaseModel
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound

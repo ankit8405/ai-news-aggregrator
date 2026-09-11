@@ -1,34 +1,28 @@
 from typing import Optional
 from ..scrapers.anthropic import AnthropicScraper
 from ..database.repository import Repository
+from .base import BaseProcessService
+
+
+class AnthropicMarkdownProcessor(BaseProcessService):
+    def __init__(self):
+        super().__init__()
+        self.scraper = AnthropicScraper()
+        self.repo = Repository()
+
+    def get_items_to_process(self, limit: Optional[int] = None) -> list:
+        return self.repo.get_anthropic_articles_without_markdown(limit=limit)
+
+    def process_item(self, item) -> Optional[str]:
+        return self.scraper.url_to_markdown(item.url)
+
+    def save_result(self, item, result: str) -> bool:
+        return self.repo.update_anthropic_article_markdown(item.guid, result)
 
 
 def process_anthropic_markdown(limit: Optional[int] = None) -> dict:
-    scraper = AnthropicScraper()
-    repo = Repository()
-    
-    articles = repo.get_anthropic_articles_without_markdown(limit=limit)
-    processed = 0
-    failed = 0
-    
-    for article in articles:
-        markdown = scraper.url_to_markdown(article.url)
-        try:
-            if markdown:
-                repo.update_anthropic_article_markdown(article.guid, markdown)
-                processed += 1
-            else:
-                failed += 1
-        except Exception as e:
-            failed += 1
-            print(f"Error processing article {article.guid}: {e}")
-            continue
-    
-    return {
-        "total": len(articles),
-        "processed": processed,
-        "failed": failed
-    }
+    processor = AnthropicMarkdownProcessor()
+    return processor.process(limit=limit)
 
 
 if __name__ == "__main__":
