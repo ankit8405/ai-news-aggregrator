@@ -11,7 +11,7 @@ A daily, personalized AI-news pipeline. It pulls fresh content from YouTube chan
 2. **Convert Anthropic articles to Markdown** — `html-to-markdown` renders each article page so summaries use the full content, not just the RSS excerpt.
 3. **Fetch YouTube transcripts** — attach transcripts to the scraped videos via `youtube-transcript-api`.
 4. **Generate digests** — `gpt-4o-mini` writes a short title and a 2–3 sentence summary for each article (`app/agent/digest.py`).
-5. **Curate & email** — the curator agent ranks the recent digests against the user profile (`app/agent/curator.py`), the email agent writes a personalized introduction (`app/agent/email.py`), and the top-N articles are sent as a styled HTML email over Gmail SMTP.
+5. **Curate & email** — the curator agent ranks the recent digests against the user profile (`app/agent/curator.py`), the email agent writes a personalized introduction (`app/agent/email.py`), and the top-N articles are sent as a styled HTML email over Gmail SMTP.h
 
 ```
 scrape ─▶ markdown ─▶ transcripts ─▶ digest (LLM) ─▶ rank (LLM) ─▶ email
