@@ -101,20 +101,20 @@ Create your `.env` from the template and fill in real values:
 cp app/.env.example app/.env
 ```
 
-| Variable                          | Required | Description                                                      |
-| --------------------------------- | -------- | ---------------------------------------------------------------- |
-| `OPENAI_API_KEY`                  | yes      | OpenAI API key (digests, ranking, email intro).                  |
-| `MY_EMAIL`                        | yes      | Gmail address the digest is sent from and to.                    |
-| `APP_PASSWORD`                    | yes      | Gmail **App Password** (requires 2FA), not your login password.  |
-| `POSTGRES_USER`                   | no       | Postgres user (default `postgres`).                              |
-| `POSTGRES_PASSWORD`               | no       | Postgres password (default `postgres`).                          |
-| `POSTGRES_DB`                     | no       | Database name (default `ai_news_aggregator`).                    |
-| `POSTGRES_HOST`                   | no       | Postgres host (default `localhost`).                            |
-| `POSTGRES_PORT`                   | no       | Postgres port (default `5432`).                                 |
-| `DATABASE_URL`                    | no       | Full Postgres URL; overrides `POSTGRES_*`. Set automatically on Render. |
-| `PROXY_USERNAME` / `PROXY_PASSWORD` | no     | Webshare proxy, required for YouTube transcripts when YouTube blocks the host IP. |
+| Variable                          | Description                                                      |
+| --------------------------------- | ---------------------------------------------------------------- |
+| `OPENAI_API_KEY`                  | OpenAI API key (digests, ranking, email intro).                  |
+| `MY_EMAIL`                        | Gmail address the digest is sent from and to.                    |
+| `APP_PASSWORD`                    | Gmail **App Password** (requires 2FA), not your login password.  |
+| `POSTGRES_USER`                   | Postgres user (default `postgres`).                              |
+| `POSTGRES_PASSWORD`               | Postgres password (default `postgres`).                          |
+| `POSTGRES_DB`                     | Database name (default `ai_news_aggregator`).                    |
+| `POSTGRES_HOST`                   | Postgres host (default `localhost`).                            |
+| `POSTGRES_PORT`                   | Postgres port (default `5432`).                                 |
+| `DATABASE_URL`                    | Full Postgres URL; overrides `POSTGRES_*`. Set automatically on Render. |
+| `PROXY_USERNAME` / `PROXY_PASSWORD` | Webshare proxy, required for YouTube transcripts when YouTube blocks the host IP. |
 
-> `.env` is git-ignored. Never commit real credentials. Locally the app uses `POSTGRES_*`; on Render it uses the injected `DATABASE_URL`.
+> `.env` is git-ignored. Locally the app uses `POSTGRES_*`; on Render it uses the injected `DATABASE_URL`.
 
 ### 3. Start PostgreSQL
 
