@@ -4,9 +4,6 @@ A daily, personalized AI-news pipeline. It pulls fresh content from YouTube chan
 
 ## How it works
 
-The pipeline runs in stages (`app/daily_runner.py -> run_daily_pipeline`):
-
-0. **Ensure the schema** — create any missing tables or columns (idempotent) so a fresh database self-initializes.
 1. **Scrape** — collect new items published in the last `N` hours and store them in PostgreSQL:
    - YouTube channel RSS feeds (`app/scrapers/youtube.py`)
    - OpenAI news RSS (`app/scrapers/openai.py`)
